@@ -33,4 +33,8 @@ public class DateTimeRange implements ValueObject {
         if (!this.startTime.isBefore(this.endTime)) return;
         this.endTime = this.endTime.minusMinutes(30);
     }
+
+    public boolean overlaps(DateTimeRange range){
+        return this.startTime.isBefore(range.endTime) && this.endTime.isAfter(range.startTime);
+    }
 }

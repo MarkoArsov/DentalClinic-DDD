@@ -11,7 +11,6 @@ import mk.ukim.finki.emt.sharedkernel.domain.valueobjects.Patient;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name="appointment")
@@ -41,11 +40,15 @@ public class Appointment extends AbstractEntity {
     }
 
     public void addTreatment(Treatment treatment){
+        if (treatments.stream().filter(t -> t.getId().equals(treatment.getId())).toList().size() > 0) return;
+
         dateTimeRange.addTime();
         treatments.add(treatment);
     }
 
     public void removeTreatment(Treatment treatment){
+        if (treatments.size() == 0) return;
+
         dateTimeRange.removeTime();
         treatments.remove(treatment);
     }
@@ -59,13 +62,10 @@ public class Appointment extends AbstractEntity {
     }
 
     public Money getMoney(){
-
         Money money = new Money(Currency.MKD, 0);
-
         treatments.forEach(treatment -> {
             money.add(treatment.getPrice());
         });
-
         return money;
     }
 }

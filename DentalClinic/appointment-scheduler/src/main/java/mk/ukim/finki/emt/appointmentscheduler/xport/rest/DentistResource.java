@@ -5,9 +5,7 @@ import mk.ukim.finki.emt.appointmentscheduler.domain.models.Dentist;
 import mk.ukim.finki.emt.appointmentscheduler.domain.models.Treatment;
 import mk.ukim.finki.emt.appointmentscheduler.services.DentistService;
 import mk.ukim.finki.emt.appointmentscheduler.services.TreatmentService;
-import mk.ukim.finki.emt.sharedkernel.domain.valueobjects.Currency;
-import mk.ukim.finki.emt.sharedkernel.domain.valueobjects.Money;
-import mk.ukim.finki.emt.sharedkernel.domain.valueobjects.Name;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
